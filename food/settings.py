@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-_)_41n8tco9i_0vlj6e+k)z)(8$_mb-r4uq$jp#o8x7kve_l)-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -59,6 +59,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                "whitenoise.middleware.WhiteNoiseMiddleware"
             ],
         },
     },
@@ -116,6 +117,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRES =[
     os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = BASE_DIR / "static"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/media/'
